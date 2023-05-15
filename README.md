@@ -94,9 +94,7 @@ Example command:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Authors are below.
-
-👤 **Author1**
+👤 **AmenMusingarimi**
 
 - GitHub: [@githubhandle](https://github.com/Amen-Musingarimi)
 - Twitter: [@twitterhandle](https://twitter.com/MusingarimiT)
@@ -107,8 +105,6 @@ Example command:
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
 
 - [ ] **[Add new books.]**
 - [ ] **[Save records of who borrowed a given book and when.]**
