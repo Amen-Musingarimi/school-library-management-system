@@ -30,7 +30,7 @@
 <details>
 <summary>RUBY</summary>
   <ul>
-    <li><a href="https://www.postgresql.org/">Ruby Terminal</a></li>
+    <li><a href="https://www.ruby-lang.org/en/documentation/">Ruby Documentation</a></li>
   </ul>
 </details>
 
