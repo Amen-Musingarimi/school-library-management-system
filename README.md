@@ -1,7 +1,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 \[school-library-management-system\] ](#-school-library-management-system-)
+  - [📖 \[school-library-management-system\] ](#-school-library-management-system-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -19,7 +19,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [school-library-management-system] <a name="about-project"></a>
+## 📖 [school-library-management-system] <a name="about-project"></a>
 
 **[school-library-management-system]** A Ruby project with classes for managing students, teachers, and their information, including personal details and permissions.
 
