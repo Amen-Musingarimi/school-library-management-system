@@ -1,11 +1,3 @@
-## Getting Started
-
-This repository includes files ruby code with 3 methods to decode morse code:
-
-<a name="readme-top"></a>
-
-<!-- TABLE OF CONTENTS -->
-
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
