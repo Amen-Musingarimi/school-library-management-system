@@ -5,7 +5,6 @@ require_relative 'rental'
 require_relative 'capitalize'
 require_relative 'trim'
 
-
 person = Person.new(22, name: 'maximilianus')
 puts person.correct_name
 
