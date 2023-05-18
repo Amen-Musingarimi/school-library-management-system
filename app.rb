@@ -40,35 +40,15 @@ class App
   def create_person(type, name = nil, age = nil, parent_permission = nil)
     case type
     when 'student'
-      if name.nil?
-        print 'Enter name: '
-        name = gets.chomp
-      end
-
-      if age.nil?
-        print 'Enter age: '
-        age = gets.chomp.to_i
-      end
-
-      if parent_permission.nil?
-        print 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp.upcase == 'Y'
-      end
+      name = prompt_name(name)
+      age = prompt_age(age)
+      parent_permission = prompt_parent_permission(parent_permission)
 
       @people << Student.new(age, name: name, parent_permission: parent_permission)
     when 'teacher'
-      if age.nil?
-        print 'Enter age: '
-        age = gets.chomp.to_i
-      end
-
-      if name.nil?
-        print 'Enter name: '
-        name = gets.chomp
-      end
-
-      print 'Enter specialization: '
-      specialization = gets.chomp
+      age = prompt_age(age)
+      name = prompt_name(name)
+      specialization = prompt_specialization
 
       teacher = Teacher.new(age, specialization, name: name)
       @people << teacher
@@ -92,32 +72,23 @@ class App
   def create_rental
     puts 'Creating a rental:'
 
-    puts 'List of books:'
-    @books.each_with_index do |book, index|
-      puts "#{index + 1}. Title: #{book.title}, Author: #{book.author}"
-    end
+    display_books
 
     print 'Select a book by number: '
     book_number = gets.chomp.to_i
 
-    if book_number.between?(1, @books.length)
+    if valid_book_number?(book_number)
       book = @books[book_number - 1]
 
-      puts 'List of people:'
-      list_people_with_numbers
+      display_people
 
       print 'Select a person by number: '
       person_number = gets.chomp.to_i
 
-      if person_number.between?(1, @people.length)
+      if valid_person_number?(person_number)
         person = @people[person_number - 1]
 
-        print 'Enter date: '
-        date = gets.chomp
-
-        rental = Rental.new(date, book, person)
-        @rentals << rental
-        puts 'Rental created successfully.'
+        create_rental_with_date(book, person)
       else
         puts 'Invalid person number.'
       end
@@ -127,7 +98,7 @@ class App
   end
 
   def list_rentals_for_person(person_id)
-    person = @people.find { |p| p.id == person_id }
+    person = find_person(person_id)
 
     if person
       puts "Listing rentals for person with ID #{person_id}:"
@@ -138,5 +109,66 @@ class App
     else
       puts 'Person not found.'
     end
+  end
+
+  private
+
+  def prompt_name(name)
+    return name unless name.nil?
+
+    print 'Enter name: '
+    gets.chomp
+  end
+
+  def prompt_age(age)
+    return age unless age.nil?
+
+    print 'Enter age: '
+    gets.chomp.to_i
+  end
+
+  def prompt_parent_permission(permission)
+    return permission unless permission.nil?
+
+    print 'Has parent permission? [Y/N]: '
+    gets.chomp.upcase == 'Y'
+  end
+
+  def prompt_specialization
+    print 'Enter specialization: '
+    gets.chomp
+  end
+
+  def display_books
+    puts 'List of books:'
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}. Title: #{book.title}, Author: #{book.author}"
+    end
+  end
+
+  def valid_book_number?(number)
+    number.between?(1, @books.length)
+  end
+
+  def display_people
+    puts 'List of people:'
+    list_people_with_numbers
+  end
+
+  def valid_person_number?(number)
+    number.between?(1, @people.length)
+  end
+
+  def find_person(person_id)
+    @people.find { |p| p.id == person_id }
+  end
+
+  def create_rental_with_date(book, person)
+    print 'Enter date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, book, person)
+    @rentals << rental
+    puts 'Rental created successfully.'
   end
 end
