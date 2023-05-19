@@ -49,7 +49,7 @@ class App
       age = prompt_age(age)
       name = prompt_name(name)
       specialization = prompt_specialization
-
+      
       teacher = Teacher.new(age, specialization, name: name)
       @people << teacher
       puts 'Teacher successfully created.'
